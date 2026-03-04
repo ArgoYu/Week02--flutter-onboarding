@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "dart.projectSearchDepth": 12,
+    "dart.flutterSdkPath": "/opt/homebrew/share/flutter"
+  }
+}
