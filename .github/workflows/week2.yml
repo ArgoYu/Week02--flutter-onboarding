@@ -1,0 +1,35 @@
+name: Week2 Autograding
+
+on:
+  push:
+    branches:
+      - "week2-*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  grade-week2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Flutter Pub Get
+        run: flutter pub get
+
+      - name: Flutter Analyze
+        run: flutter analyze
+
+      # Optional for Week2:
+      # - name: Flutter Test
+      #   run: flutter test
+
+      - name: Run Week2 Grader
+        run: python3 scripts/grade_week2.py

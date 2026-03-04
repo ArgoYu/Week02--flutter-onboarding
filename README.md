@@ -82,6 +82,58 @@ Complete the TODOs in these files:
 flutter analyze
 ```
 
+## Week2 Autograding (Local + GitHub Actions)
+
+This repository includes an autograding workflow and script for Week2.
+
+- Workflow file: `.github/workflows/week2.yml`
+- Grader script: `scripts/grade_week2.py`
+
+### GitHub Actions Trigger Rules
+
+- Push to branches matching `week2-*`
+- Pull Request targeting `main`
+
+### What the Autograder Checks
+
+1. `lib/models/onboarding_item.dart`
+   - `OnboardingItem` class exists
+   - `final String title`, `description`, `image`
+   - constructor uses named `required` parameters for all fields
+2. `lib/data/onboarding_data.dart`
+   - `onboardingItems` contains at least 3 `OnboardingItem(...)` entries
+3. `lib/widgets/onboarding_card.dart`
+   - renders `item.image`, `item.title`, `item.description`
+   - no unresolved `TODO(student)` placeholders
+4. `lib/pages/onboarding_page.dart`
+   - updates `currentIndex` in `onPageChanged` via `setState`
+   - indicator uses active/inactive logic based on `currentIndex`
+   - next button handles both next-page and finish flow
+   - navigates to `HomePage` with `Navigator`
+   - no unresolved `TODO(student)` placeholders
+5. Home page check
+   - if `lib/pages/home_page.dart` exists, it must not contain TODO placeholders
+   - otherwise, `HomePage` inside `onboarding_page.dart` must not contain TODO placeholders
+
+### CI Steps
+
+```bash
+flutter pub get
+flutter analyze
+python3 scripts/grade_week2.py
+```
+
+`flutter test` is optional for Week2 and currently disabled in CI.
+
+### Run Autograder Locally
+
+```bash
+python3 scripts/grade_week2.py
+```
+
+- If any required check fails, script exits with code `1` (CI fails).
+- If all checks pass, script exits with code `0` (CI passes).
+
 ## Git Workflow Requirements
 
 1. Create a feature branch (do not work directly on `main`):
