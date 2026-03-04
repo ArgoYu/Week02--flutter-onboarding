@@ -37,9 +37,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   void _onNextPressed() {
-    // TODO(student): Replace this placeholder with the correct condition.
-    // Hint: the `isLastPage` getter is already available above.
-    final shouldFinish = currentIndex == onboardingItems.length;
+    // TODO(student): Explain why this is the correct finish condition.
+    final shouldFinish = isLastPage;
 
     if (shouldFinish) {
       _finishOnboarding();
@@ -112,10 +111,12 @@ class _IndicatorRow extends StatelessWidget {
           height: 8,
           width: isActive ? 22 : 8,
           decoration: BoxDecoration(
-            // TODO(student): Style active vs inactive indicators clearly.
-            // Active dot: primary/accent color.
-            // Inactive dot: neutral grey.
-            color: Colors.grey,
+            // TODO(student): Use isActive ternary to style active vs inactive.
+            // Active: Theme.of(context).colorScheme.primary
+            // Inactive: Colors.grey.shade400
+            color: isActive
+                ? Theme.of(context).colorScheme.primary
+                : Colors.grey.shade400,
             borderRadius: BorderRadius.circular(999),
           ),
         );

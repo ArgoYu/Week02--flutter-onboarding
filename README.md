@@ -58,23 +58,37 @@ flutter run
 
 ## Assignment Scope (What to Implement)
 
-Complete the TODOs in these files:
+Complete the TODOs in these files only:
 
 1. `lib/models/onboarding_item.dart`
 2. `lib/data/onboarding_data.dart`
 3. `lib/widgets/onboarding_card.dart`
 4. `lib/pages/onboarding_page.dart`
 
+### Image Field Rule (Week 2)
+
+For Week 2, treat `image` as an emoji string (not an asset path).
+Examples: `"🩺"`, `"🎯"`, `"🤖"`.
+Render it with `Text(item.image)`.
+
 ### Expected Functional Result
 
-- Onboarding item model includes required fields (title, description, image).
+- Onboarding item model includes required fields: `title`, `description`, `image`.
 - `onboardingItems` contains at least 3 pages of data.
-- `OnboardingCard` renders data from the model, not placeholder text.
+- `OnboardingCard` renders real data from the model, not placeholder text.
 - Indicator style clearly distinguishes active and inactive states.
 - Next button behavior:
   - If not last page: move to next page.
   - If last page: navigate to `HomePage`.
 - `HomePage` is already scaffolded; students focus on onboarding flow logic.
+- No unresolved `TODO(student)` placeholders remain in required files.
+
+## Common Mistakes (Read This If You Get Stuck)
+
+- Leaving `TODO(student)` in required files causes autograder failure.
+- Missing named `required` parameters in `OnboardingItem` constructor causes autograder failure.
+- Adding fewer than 3 `OnboardingItem(...)` entries causes autograder failure.
+- Using a branch name that does not start with `week2-` can prevent push-triggered CI from running.
 
 ## Recommended Validation
 
@@ -93,6 +107,7 @@ This repository includes an autograding workflow and script for Week2.
 
 - Push to branches matching `week2-*`
 - Pull Request targeting `main`
+- If your branch name does not start with `week2-`, push-based autograding will not run.
 
 ### What the Autograder Checks
 
@@ -131,6 +146,19 @@ python3 scripts/grade_week2.py
 python3 scripts/grade_week2.py
 ```
 
+Example passing output:
+
+```text
+=== Week2 Autograder ===
+[PASS] lib/models/onboarding_item.dart: model fields and required constructor OK.
+[PASS] lib/data/onboarding_data.dart: contains at least 3 OnboardingItem entries (3).
+[PASS] lib/widgets/onboarding_card.dart: renders item.image, item.title, and item.description.
+[PASS] lib/pages/onboarding_page.dart: page change, indicator, and navigation logic OK.
+[PASS] HomePage (in lib/pages/onboarding_page.dart) has no TODO placeholders.
+
+Result: PASSED
+```
+
 - If any required check fails, script exits with code `1` (CI fails).
 - If all checks pass, script exits with code `0` (CI passes).
 
@@ -141,6 +169,8 @@ python3 scripts/grade_week2.py
 ```bash
 git checkout -b week2-yourname
 ```
+
+Branch naming is strict for push CI: it must start with `week2-`.
 
 2. Commit your work:
 
@@ -155,10 +185,16 @@ git commit -m "Week2: complete onboarding assignment"
 git push -u origin week2-yourname
 ```
 
-4. Open a Pull Request with title format:
+4. Open a Pull Request targeting `main` with title format:
 
 ```text
 Week2 - Your Name
+```
+
+Optional GitHub CLI command:
+
+```bash
+gh pr create --base main --head week2-yourname --title "Week2 - Your Name"
 ```
 
 ## Evaluation Focus
