@@ -1,7 +1,13 @@
 class OnboardingItem {
-  // TODO(student): 定义该模型需要的字段（建议包含 title, description, image）
-  // 示例：final String title;
+  // TODO(student): Define the model fields required by the README assignment.
+  // Add immutable fields for at least:
+  // - title (String): main headline shown on each onboarding screen
+  // - description (String): supporting text shown below the title
+  // - image (String): asset path or emoji/icon token used as a visual
+  // Example: final String title;
 
-  // TODO(student): 根据你定义的字段补全构造函数参数
+  // TODO(student): Update this constructor to require all fields you added above.
+  // Use named `required` parameters so each onboarding item is complete and
+  // can be rendered safely in the UI.
   const OnboardingItem();
 }

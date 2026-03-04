@@ -12,8 +12,12 @@ class OnboardingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(student): 使用 item 的字段完成 UI（图片、标题、描述）
-    // 目标：页面中间展示一个简洁的 onboarding 卡片
+    // TODO(student): Build this card using the model fields (image, title,
+    // description) instead of hard-coded placeholder text.
+    // Match the README expectation of clean Flutter layout structure:
+    // - keep a Column-based hierarchy
+    // - use SizedBox for spacing
+    // - keep the visual container styled and readable
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -27,17 +31,17 @@ class OnboardingCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             alignment: Alignment.center,
-            child: const Text('TODO: image'),
+            child: const Text('TODO(student): Render item.image here'),
           ),
           const SizedBox(height: 24),
-          const Text(
-            'TODO: title',
+          Text(
+            'TODO(student): Render item.title here',
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 12),
-          const Text(
-            'TODO: description',
+          Text(
+            'TODO(student): Render item.description here',
             style: TextStyle(fontSize: 16, color: Colors.black54),
             textAlign: TextAlign.center,
           ),

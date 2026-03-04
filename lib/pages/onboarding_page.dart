@@ -24,9 +24,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
   bool get isLastPage => currentIndex == onboardingItems.length - 1;
 
   void _onNextPressed() {
-    // TODO(student):
-    // 1) 如果不是最后一页，切到下一页（animateToPage）
-    // 2) 如果是最后一页，跳转到 HomePage
+    // TODO(student): Implement button behavior required by the README flow.
+    // 1) If this is NOT the last page, call `animateToPage` to move forward.
+    // 2) If this IS the last page, navigate to `HomePage` with Navigator.
+    // 3) Keep transition duration/curve user-friendly (e.g. 250-350ms, ease).
   }
 
   @override
@@ -39,7 +40,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: PageView.builder(
               controller: _pageController,
               itemCount: onboardingItems.length,
-              // TODO(student): 在 onPageChanged 更新 currentIndex
+              // TODO(student): Use `onPageChanged` to update `currentIndex`
+              // with `setState`, so the indicator and button label stay synced.
               itemBuilder: (context, index) {
                 return OnboardingCard(item: onboardingItems[index]);
               },
@@ -89,7 +91,9 @@ class _IndicatorRow extends StatelessWidget {
           height: 8,
           width: isActive ? 22 : 8,
           decoration: BoxDecoration(
-            // TODO(student): 当前页高亮，其余页灰色
+            // TODO(student): Style active vs inactive indicators clearly.
+            // Active dot: primary/accent color.
+            // Inactive dot: neutral grey.
             color: Colors.grey,
             borderRadius: BorderRadius.circular(999),
           ),
@@ -104,11 +108,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(student): 设计一个简单的首页占位界面
+    // TODO(student): Replace this placeholder with a simple "Home" screen.
+    // The goal is to confirm onboarding completion and provide a clear
+    // landing state after tapping "Get Started".
     return Scaffold(
       appBar: AppBar(title: const Text('Home')),
       body: const Center(
-        child: Text('TODO: Welcome to Home Page'),
+        child: Text('TODO(student): Welcome to Home Page'),
       ),
     );
   }
