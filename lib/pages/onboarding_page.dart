@@ -23,11 +23,29 @@ class _OnboardingPageState extends State<OnboardingPage> {
 
   bool get isLastPage => currentIndex == onboardingItems.length - 1;
 
+  void _goToNextPage() {
+    _pageController.nextPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
+  }
+
+  void _finishOnboarding() {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => const HomePage()),
+    );
+  }
+
   void _onNextPressed() {
-    // TODO(student): Implement button behavior required by the README flow.
-    // 1) If this is NOT the last page, call `animateToPage` to move forward.
-    // 2) If this IS the last page, navigate to `HomePage` with Navigator.
-    // 3) Keep transition duration/curve user-friendly (e.g. 250-350ms, ease).
+    // TODO(student): Replace this placeholder with the correct condition.
+    // Hint: the `isLastPage` getter is already available above.
+    final shouldFinish = currentIndex == onboardingItems.length;
+
+    if (shouldFinish) {
+      _finishOnboarding();
+    } else {
+      _goToNextPage();
+    }
   }
 
   @override
@@ -40,8 +58,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: PageView.builder(
               controller: _pageController,
               itemCount: onboardingItems.length,
-              // TODO(student): Use `onPageChanged` to update `currentIndex`
-              // with `setState`, so the indicator and button label stay synced.
+              onPageChanged: (index) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
               itemBuilder: (context, index) {
                 return OnboardingCard(item: onboardingItems[index]);
               },
@@ -108,13 +129,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(student): Replace this placeholder with a simple "Home" screen.
-    // The goal is to confirm onboarding completion and provide a clear
-    // landing state after tapping "Get Started".
     return Scaffold(
       appBar: AppBar(title: const Text('Home')),
       body: const Center(
-        child: Text('TODO(student): Welcome to Home Page'),
+        child: Text(
+          'Welcome! Onboarding completed.',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        ),
       ),
     );
   }

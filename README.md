@@ -1,415 +1,117 @@
+# Week 02 Flutter Onboarding Homework
 
-# Flutter Week 2 Onboarding Repository
+This repository is the Week 02 Flutter training assignment.
+The current project is a Flutter onboarding flow with several TODO markers for students to complete.
 
-This repository is used for **Week 2 Flutter training**.  
-Students will practice Flutter fundamentals and the professional Git workflow used in real development teams.
+## Learning Goals
 
-The focus of this training is to understand:
+By finishing this assignment, students should be able to:
 
-- Flutter project structure
-- Dart basics
-- Flutter widgets
-- Layout using Column and Row
-- Git workflow (clone → branch → commit → push → pull request)
+1. Understand Flutter project structure and code organization.
+2. Build UI with `Scaffold`, `Column`, `Row`, `Container`, and `PageView`.
+3. Define and use a Dart data model.
+4. Connect UI to data-driven rendering.
+5. Handle simple page state and navigation.
+6. Use a standard Git branch -> commit -> PR workflow.
 
----
+## Actual Repository Structure
 
-# Learning Goals
-
-By the end of this exercise, students should be able to:
-
-1. Clone a GitHub repository
-2. Run a Flutter application locally
-3. Understand where Flutter code lives inside a project
-4. Modify UI widgets
-5. Use Git branches to submit changes
-6. Open a Pull Request for review
-
----
-
-# Repository Structure
-
-```
-
-flutter-onboarding-week2
-│
+```text
+week02_flutter_onboarding
 ├── README.md
-│
-├── docs
-│   ├── week2_assignment.md
-│   └── rubric.md
-│
-└── starter_app
+├── pubspec.yaml
 ├── lib
 │   ├── main.dart
-│   └── home_screen.dart
-│
-├── pubspec.yaml
-└── other flutter files
-
+│   ├── models
+│   │   └── onboarding_item.dart
+│   ├── data
+│   │   └── onboarding_data.dart
+│   ├── widgets
+│   │   └── onboarding_card.dart
+│   └── pages
+│       └── onboarding_page.dart
+└── test
+    └── widget_test.dart
 ```
 
-Explanation:
+## Prerequisites
 
-### `starter_app/`
-This folder contains the Flutter project students will run and modify.
+- Git
+- Flutter SDK (compatible with the project)
 
-### `docs/week2_assignment.md`
-Detailed assignment instructions.
+Check environment:
 
-### `docs/rubric.md`
-How the assignment will be evaluated.
-
----
-
-# Prerequisites
-
-Before starting, make sure the following are installed:
-
-### Git
-Check with:
-
-```
-
+```bash
 git --version
-
-```
-
-### Flutter SDK
-Check with:
-
-```
-
 flutter --version
-
-```
-
-### Verify Flutter environment
-
-Run:
-
-```
-
 flutter doctor
-
 ```
 
-Flutter Doctor will show if anything is missing.
+## Run the Project
 
-Students must fix all critical issues before continuing.
+From repository root:
 
----
-
-# Step 1 — Clone the Repository
-
-Clone the repository from GitHub.
-
-```
-
-git clone [https://github.com/YOUR_GITHUB_USERNAME/flutter-onboarding-week2.git](https://github.com/YOUR_GITHUB_USERNAME/flutter-onboarding-week2.git)
-
-```
-
-Move into the repository:
-
-```
-
-cd flutter-onboarding-week2
-
-```
-
----
-
-# Step 2 — Run the Flutter Project
-
-Navigate to the Flutter project folder.
-
-```
-
-cd starter_app
-
-```
-
-Install dependencies.
-
-```
-
+```bash
 flutter pub get
-
-```
-
-Run the application.
-
-```
-
 flutter run
-
 ```
 
-If everything is configured correctly, a simple Flutter application will launch.
+## Assignment Scope (What to Implement)
 
----
+Complete the TODOs in these files:
 
-# Step 3 — Understand the Flutter Project
+1. `lib/models/onboarding_item.dart`
+2. `lib/data/onboarding_data.dart`
+3. `lib/widgets/onboarding_card.dart`
+4. `lib/pages/onboarding_page.dart`
 
-Most Flutter code lives inside the **lib/** folder.
+### Expected Functional Result
 
+- Onboarding item model includes required fields (title, description, image).
+- `onboardingItems` contains at least 3 pages of data.
+- `OnboardingCard` renders data from the model, not placeholder text.
+- Indicator style clearly distinguishes active and inactive states.
+- Next button behavior:
+  - If not last page: move to next page.
+  - If last page: navigate to `HomePage`.
+- `HomePage` is already scaffolded; students focus on onboarding flow logic.
+
+## Recommended Validation
+
+```bash
+flutter analyze
 ```
 
-starter_app/lib
+## Git Workflow Requirements
 
+1. Create a feature branch (do not work directly on `main`):
+
+```bash
+git checkout -b week2-yourname
 ```
 
-Important files:
+2. Commit your work:
 
-### `main.dart`
-
-This is the **entry point** of the Flutter application.
-
-The application starts here and calls:
-
-```
-
-runApp()
-
-```
-
-### `home_screen.dart`
-
-This file contains the UI that students will modify for the assignment.
-
----
-
-# Step 4 — The Assignment
-
-Students will modify the UI in:
-
-```
-
-starter_app/lib/home_screen.dart
-
-```
-
-The final UI must include:
-
-- A large title text
-- A subtitle text
-- A Row containing:
-  - an icon
-  - a label
-- A button
-- A Column layout
-- Spacing using SizedBox
-- A styled Container
-
-The button must print the following message to the console when pressed:
-
-```
-
-Week 2 assignment completed
-
-```
-
-Full instructions can be found in:
-
-```
-
-docs/week2_assignment.md
-
-```
-
----
-
-# Step 5 — Create a Branch
-
-Students must NOT work directly on the `main` branch.
-
-Create a new branch using the following format:
-
-```
-
-week2-yourname
-
-```
-
-Example:
-
-```
-
-git checkout -b week2-yanbing
-
-```
-
----
-
-# Step 6 — Commit Changes
-
-After completing the assignment, stage the changes.
-
-```
-
+```bash
 git add .
-
+git commit -m "Week2: complete onboarding assignment"
 ```
 
-Commit the changes.
+3. Push branch:
 
-```
-
-git commit -m "Week2: complete Flutter UI assignment"
-
-```
-
----
-
-# Step 7 — Push to GitHub
-
-Push the branch to GitHub.
-
-```
-
+```bash
 git push -u origin week2-yourname
-
 ```
 
----
+4. Open a Pull Request with title format:
 
-# Step 8 — Open a Pull Request
-
-Go to the GitHub repository page.
-
-GitHub will suggest creating a Pull Request.
-
-Create a Pull Request with the title:
-
-```
-
+```text
 Week2 - Your Name
-
 ```
 
-Fill out the checklist in the PR template.
+## Evaluation Focus
 
----
-
-# Code Review
-
-After submitting the Pull Request, the instructor will review the code.
-
-The review may include comments on:
-
-- Widget structure
-- Layout quality
-- Code readability
-- Flutter best practices
-
-Students may be asked to update their code before the Pull Request is approved.
-
----
-
-# Common Flutter Commands
-
-Install dependencies:
-
-```
-
-flutter pub get
-
-```
-
-Run the application:
-
-```
-
-flutter run
-
-```
-
-Format code:
-
-```
-
-flutter format .
-
-```
-
-Clean project:
-
-```
-
-flutter clean
-
-```
-
----
-
-# Important Flutter Concept
-
-Flutter uses a **widget-based architecture**.
-
-Everything you see on the screen is a widget:
-
-- Text
-- Buttons
-- Layout containers
-- Images
-- Icons
-
-Widgets are nested together to build the user interface.
-
-Example structure:
-
-```
-
-Column
-├── Text
-├── Text
-├── Row
-│    ├── Icon
-│    └── Text
-└── Button
-
-```
-
-Learning how widgets combine to form a UI is one of the most important skills in Flutter development.
-
----
-
-# Evaluation Criteria
-
-Assignments will be evaluated based on:
-
-| Category | Points |
-|--------|--------|
-| Application runs successfully | 2 |
-| Required widgets implemented | 4 |
-| Layout and spacing quality | 2 |
-| Code clarity and structure | 2 |
-
-Total: **10 points**
-
----
-
-# Professional Workflow Reminder
-
-This exercise simulates a real software development workflow:
-
-1. Clone repository
-2. Create branch
-3. Implement feature
-4. Commit changes
-5. Push branch
-6. Submit Pull Request
-7. Code review
-
-This workflow is used by most professional engineering teams.
-
----
-
-# Instructor
-
-Argo Yu  
-Computer Engineering  
-Flutter Development Training
-```
-
+- App runs successfully.
+- Required onboarding functionality is complete.
+- Widget structure and layout readability.
+- Code clarity and maintainability.
